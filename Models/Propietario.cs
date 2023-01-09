@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sintronico.Models;
 
@@ -20,6 +21,7 @@ public class Propietario
 
     public string Email {get;set;}
     
+    [NotMapped]
     public string Avatar {get;set;}
 
     public string Clave {get;set;}

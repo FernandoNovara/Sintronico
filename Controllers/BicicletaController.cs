@@ -4,15 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sintronico.Models;
 
 namespace Sintronico.Controllers
 {
     public class BicicletaController : Controller
     {
+        RepositorioBicicleta repositorio;
+
+        public BicicletaController()
+        {
+            repositorio = new RepositorioBicicleta();
+        }
+
         // GET: Bicicleta
         public ActionResult Index()
         {
-            return View();
+            var lista = repositorio.ObtenerBicicletas();
+            return View(lista);
         }
 
         // GET: Bicicleta/Details/5

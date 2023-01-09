@@ -4,15 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sintronico.Models;
 
 namespace Sintronico.Controllers
 {
     public class PresupuestoController : Controller
     {
+        RepositorioPresupuesto repositorio;
+
+        public PresupuestoController()
+        {
+            repositorio = new RepositorioPresupuesto();
+        }
         // GET: Presupuesto
         public ActionResult Index()
         {
-            return View();
+            var lista = repositorio.ObtenerPresupuestos();
+            return View(lista);
         }
 
         // GET: Presupuesto/Details/5

@@ -4,15 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sintronico.Models;
 
 namespace Sintronico.Controllers
 {
     public class PagosController : Controller
     {
+        RepositorioPago repositorioPagos;
+
+        public PagosController()
+        {
+            repositorioPagos = new RepositorioPago();
+        }
+
         // GET: Pagos
         public ActionResult Index()
         {
-            return View();
+            var lista = repositorioPagos.ObtenerPagos();
+            return View(lista);
         }
 
         // GET: Pagos/Details/5

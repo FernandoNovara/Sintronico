@@ -8,177 +8,177 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Sintronico
 build_property.RootNamespace = Sintronico
-build_property.ProjectDir = c:\xampp\htdocs\Net\Sintronico\
+build_property.ProjectDir = C:\xampp\htdocs\Net\Sintronico\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\xampp\htdocs\Net\Sintronico
+build_property.MSBuildProjectDirectory = C:\xampp\htdocs\Net\Sintronico
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmljaWNsZXRhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmljaWNsZXRhXERldGFsbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmljaWNsZXRhXEVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmljaWNsZXRhXEVsaW1pbmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Bicicleta/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmljaWNsZXRhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZVByZXN1cHVlc3RvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZVByZXN1cHVlc3RvXERldGFsbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZVByZXN1cHVlc3RvXEVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZVByZXN1cHVlc3RvXEVsaW1pbmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/DetallePresupuesto/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV0YWxsZVByZXN1cHVlc3RvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Home/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Home/Privacy.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Pagos/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Pagos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Pagos/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Pagos/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb3NcRGV0YWxsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Pagos/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Pagos/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb3NcRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Pagos/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Pagos/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb3NcRWxpbWluYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Pagos/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Pagos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9cRGV0YWxsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9cRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9cRWxpbWluYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Presupuesto/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc3VwdWVzdG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Propietario/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Propietario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Propietario/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Propietario/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRGV0YWxsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Propietario/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Propietario/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRWRpdGFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Propietario/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Propietario/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRWxpbWluYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Propietario/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Propietario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwdWVzdG9zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwdWVzdG9zXERldGFsbGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwdWVzdG9zXEVkaXRhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwdWVzdG9zXEVsaW1pbmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Repuestos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwdWVzdG9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Shared/Error.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Usuario/Create.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Usuario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Usuario/Detalles.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Usuario/Detalles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZXRhbGxlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Usuario/Editar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Usuario/Editar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0YXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Usuario/Eliminar.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Usuario/Eliminar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFbGltaW5hci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Usuario/Index.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Usuario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/_ViewImports.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/_ViewStart.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/xampp/htdocs/Net/Sintronico/Views/Shared/_Layout.cshtml]
+[C:/xampp/htdocs/Net/Sintronico/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3bzr2rjrfc

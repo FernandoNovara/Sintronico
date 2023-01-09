@@ -4,21 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sintronico.Models;
 
 namespace Sintronico.Controllers
 {
     public class PropietarioController : Controller
     {
+        RepositorioPropietario repositorio;
+
+        public PropietarioController()
+        {
+            repositorio = new RepositorioPropietario();
+        }
+
         // GET: Propietario
         public ActionResult Index()
         {
-            return View();
+            var lista = repositorio.ObtenerPropietarios();
+            return View(lista);
         }
 
         // GET: Propietario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var p = repositorio.ObtenerPropietario(id);
+            return View(p);
         }
 
         // GET: Propietario/Create
@@ -30,13 +40,19 @@ namespace Sintronico.Controllers
         // POST: Propietario/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Propietario p)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                var res = repositorio.Alta(p);
+                if (res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -45,21 +61,39 @@ namespace Sintronico.Controllers
         }
 
         // GET: Propietario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            var p = repositorio.ObtenerPropietario(id);
+            return View(p);
         }
 
         // POST: Propietario/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                var p = repositorio.ObtenerPropietario(id);
+                p.Nombre = collection["Nombre"];
+                p.Apellido = collection["Apellido"];
+                p.Dni = collection["Dni"];
+                p.Telefono = collection["Telefono"];
+                p.Direccion = collection["Direccion"];
+                p.Email = collection["Email"];
+                p.Avatar = collection["Avatar"];
+                p.Clave = collection["Clave"];
 
-                return RedirectToAction(nameof(Index));
+                var res = repositorio.Editar(p);
+
+                if (res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -68,21 +102,29 @@ namespace Sintronico.Controllers
         }
 
         // GET: Propietario/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            var p = repositorio.ObtenerPropietario(id);
+            return View(p);
         }
 
         // POST: Propietario/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var res = repositorio.Baja(id);
 
-                return RedirectToAction(nameof(Index));
+                if (res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

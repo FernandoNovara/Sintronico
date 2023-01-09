@@ -1,4 +1,4 @@
-@model IEnumerable<Sintronico.Models.Pagos>
+@model IEnumerable<Sintronico.Models.Pago>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdPagos)
+                @Html.DisplayNameFor(model => model.IdPago)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdPresupuesto)
@@ -31,7 +31,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPagos)
+                @Html.DisplayFor(modelItem => item.IdPago)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdPresupuesto)

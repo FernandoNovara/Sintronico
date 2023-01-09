@@ -16,11 +16,11 @@ public class Presupuesto
 
     public Propietario Usuario {get;set;}
 
-    public string FechaInicio {get;set;}
+    public DateTime FechaInicio {get;set;}
 
-    public string FechaEntrega {get;set;}
+    public DateTime FechaEntrega {get;set;}
 
-    public string Monto {get;set;}
+    public Double Monto {get;set;}
 
     public string Estado {get;set;}
 }

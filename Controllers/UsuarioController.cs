@@ -4,15 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Sintronico.Models;
 
 namespace Sintronico.Controllers
 {
     public class UsuarioController : Controller
     {
+        RepositorioUsuario repositorioUsuario;
+
+        public UsuarioController()
+        {
+            repositorioUsuario = new RepositorioUsuario();
+        }
+
         // GET: Usuario
         public ActionResult Index()
         {
-            return View();
+            var lista = repositorioUsuario.ObtenerUsuarios();
+            return View(lista);
         }
 
         // GET: Usuario/Details/5

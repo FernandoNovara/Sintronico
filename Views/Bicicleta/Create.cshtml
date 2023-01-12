@@ -13,13 +13,13 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="IdBicicleta" class="control-label"></label>
-                <input asp-for="IdBicicleta" class="form-control" />
-                <span asp-validation-for="IdBicicleta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdPropietario" class="control-label"></label>
-                <input asp-for="IdPropietario" class="form-control" />
+                <select name="IdPropietario" class="form-control">
+                    @foreach (var item in (List<Propietario>) ViewBag.Propietario)
+                    {
+                        <option value="@item.IdPropietario"> @(item.Nombre +" "+ item.Apellido) </option>
+                    }
+                </select>
                 <span asp-validation-for="IdPropietario" class="text-danger"></span>
             </div>
             <div class="form-group">

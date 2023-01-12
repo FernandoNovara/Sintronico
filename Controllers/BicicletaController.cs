@@ -11,10 +11,12 @@ namespace Sintronico.Controllers
     public class BicicletaController : Controller
     {
         RepositorioBicicleta repositorio;
+        RepositorioPropietario RepositorioPropietario;
 
         public BicicletaController()
         {
             repositorio = new RepositorioBicicleta();
+            RepositorioPropietario = new RepositorioPropietario();
         }
 
         // GET: Bicicleta
@@ -25,27 +27,37 @@ namespace Sintronico.Controllers
         }
 
         // GET: Bicicleta/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerBicicleta(id);
+            return View(lista);
         }
 
         // GET: Bicicleta/Create
         public ActionResult Create()
         {
+            ViewBag.Propietario = RepositorioPropietario.ObtenerPropietarios();
             return View();
         }
 
         // POST: Bicicleta/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Bicicleta bicicleta)
         {
             try
             {
-                // TODO: Add insert logic here
+                var res = repositorio.Alta(bicicleta);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
+                
             }
             catch
             {
@@ -54,21 +66,38 @@ namespace Sintronico.Controllers
         }
 
         // GET: Bicicleta/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            ViewBag.Propietario = RepositorioPropietario.ObtenerPropietarios();
+            var lista = repositorio.ObtenerBicicleta(id);
+            return View(lista);
         }
 
         // POST: Bicicleta/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
-            {
-                // TODO: Add update logic here
+            {   
+                var b = repositorio.ObtenerBicicleta(id);
+                b.IdPropietario = Int32.Parse(collection["IdPropietario"]);
+                b.Marca = collection["Marca"];
+                b.Color = collection["Color"];
+                b.NumeroSerie = collection["NumeroSerie"];
+                b.Tipo = collection["Tipo"];
+                b.Imagen = collection["Imagen"];
 
-                return RedirectToAction(nameof(Index));
+                var res = repositorio.Editar(b);
+
+                if (res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+            }
             }
             catch
             {
@@ -77,21 +106,29 @@ namespace Sintronico.Controllers
         }
 
         // GET: Bicicleta/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerBicicleta(id);
+            return View(lista);
         }
 
         // POST: Bicicleta/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var res = repositorio.Baja(id);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

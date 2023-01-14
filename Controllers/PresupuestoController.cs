@@ -11,10 +11,14 @@ namespace Sintronico.Controllers
     public class PresupuestoController : Controller
     {
         RepositorioPresupuesto repositorio;
+        RepositorioBicicleta repositorioBicicleta;
+        RepositorioUsuario repositorioUsuario;
 
         public PresupuestoController()
         {
             repositorio = new RepositorioPresupuesto();
+            repositorioBicicleta = new RepositorioBicicleta();
+            repositorioUsuario = new RepositorioUsuario();
         }
         // GET: Presupuesto
         public ActionResult Index()
@@ -24,27 +28,36 @@ namespace Sintronico.Controllers
         }
 
         // GET: Presupuesto/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerPresupuesto(id);
+            return View(lista);
         }
 
         // GET: Presupuesto/Create
         public ActionResult Create()
         {
+            ViewBag.Bicicletas = repositorioBicicleta.ObtenerBicicletas();
+            ViewBag.Usuarios = repositorioUsuario.ObtenerUsuarios();
             return View();
         }
 
         // POST: Presupuesto/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Presupuesto Presupuesto)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                var res = repositorio.Alta(Presupuesto);
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -53,21 +66,37 @@ namespace Sintronico.Controllers
         }
 
         // GET: Presupuesto/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerPresupuesto(id);
+            return View(lista);
         }
 
         // POST: Presupuesto/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                var p = repositorio.ObtenerPresupuesto(id);
+                p.IdBicicleta = Int32.Parse(collection["IdBicicleta"]);
+                p.IdUsuario = Int32.Parse(collection["IdUsuario"]);
+                p.FechaInicio = DateTime.Parse(collection["FechaInicio"]) ;
+                p.FechaEntrega = DateTime.Parse(collection["FechaEntrega"]);
+                p.Monto = Double.Parse(collection["Monto"]);
+                p.Estado = collection["Estado"];
 
-                return RedirectToAction(nameof(Index));
+                var res = repositorio.Editar(p);
+
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -76,21 +105,29 @@ namespace Sintronico.Controllers
         }
 
         // GET: Presupuesto/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerPresupuesto(id);
+            return View(lista);
         }
 
         // POST: Presupuesto/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var res = repositorio.Baja(id);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

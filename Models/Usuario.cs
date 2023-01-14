@@ -15,8 +15,6 @@ public class Usuario
     public string Email {get;set;}
 
     public string Clave {get;set;}
-
-    public string Direccion {get;set;}
     
     public string Avatar {get;set;}
 

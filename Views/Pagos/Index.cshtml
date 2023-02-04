@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.FechaEmision)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Editar", "Editar", new { id = item.IdPago }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.IdPago }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdPago })
             </td>
         </tr>
 }

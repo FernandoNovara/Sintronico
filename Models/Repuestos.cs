@@ -16,5 +16,5 @@ public class Repuestos
 
     public string Detalle {get;set;}
 
-    public string Imagen {get;set;}
+    public string? Imagen {get;set;}
 }

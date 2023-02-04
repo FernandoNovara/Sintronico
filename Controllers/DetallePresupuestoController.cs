@@ -12,41 +12,90 @@ namespace Sintronico.Controllers
     {
 
         RepositorioDetallePresupuesto repositorio;
-
+        RepositorioRepuesto repositorioRepuesto;
+        RepositorioPresupuesto repositorioPresupuesto;
+ 
         public DetallePresupuestoController()
         {
             repositorio = new RepositorioDetallePresupuesto();
+            repositorioRepuesto = new RepositorioRepuesto();
+            repositorioPresupuesto = new RepositorioPresupuesto();
         }
 
         // GET: DetallePresupuesto
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var lista = repositorio.ObtenerDetallePresupuestos();
+            var lista = repositorio.ObtenerDetallePresupuestos(id);
+            ViewBag.IdPresupuesto = id;
             return View(lista);
         }
 
         // GET: DetallePresupuesto/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerDetallePresupuesto(id);
+            return View(lista);
         }
 
         // GET: DetallePresupuesto/Create
-        public ActionResult Create()
+        public ActionResult CreateArreglo()
         {
+            ViewBag.Presupuesto = repositorioPresupuesto.ObtenerPresupuestos();
+            return View();
+        }
+
+               // POST: DetallePresupuesto/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateArreglo(DetallePresupuesto detalle)
+        {
+            try
+            {
+                var res = repositorio.Alta(detalle);
+ 
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
+                
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult CreateRepuesto(int id)
+        {
+            ViewBag.Repuestos = repositorioRepuesto.ObtenerRepuestos();
+            ViewBag.IdPresupuesto = id;
             return View();
         }
 
         // POST: DetallePresupuesto/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult CreateRepuesto(DetallePresupuesto detalle)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                var repuesto = repositorioRepuesto.ObtenerRepuesto(detalle.IdRepuesto);
+                detalle.Total = repuesto.Monto * detalle.Cantidad;
+                var res = repositorio.Alta(detalle);
+ 
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index),new {id = detalle.IdPresupuesto});
+                }
+                else
+                {
+                    return View();
+                }
+                
             }
             catch
             {
@@ -55,21 +104,37 @@ namespace Sintronico.Controllers
         }
 
         // GET: DetallePresupuesto/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            ViewBag.Repuestos = repositorioRepuesto.ObtenerRepuestos();
+            ViewBag.Presupuesto = repositorioPresupuesto.ObtenerPresupuestos();
+            var lista = repositorio.ObtenerDetallePresupuesto(id);
+            return View(lista);
         }
 
         // POST: DetallePresupuesto/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                var detalle = repositorio.ObtenerDetallePresupuesto(id);
+                detalle.IdRepuesto = Int32.Parse(collection["IdRepuesto"]);
+                detalle.IdPresupuesto = Int32.Parse(collection["IdPresupuesto"]);
+                detalle.Total = Double.Parse(collection["Total"]);
+                detalle.Cantidad = Int32.Parse(collection["Cantidad"]);
 
-                return RedirectToAction(nameof(Index));
+                var res = repositorio.Editar(detalle);
+
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index),new {id = detalle.IdPresupuesto});
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -78,21 +143,30 @@ namespace Sintronico.Controllers
         }
 
         // GET: DetallePresupuesto/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            var lista = repositorio.ObtenerDetallePresupuesto(id);
+            ViewBag.IdPresupuesto = lista.IdPresupuesto;
+            return View(lista);
         }
 
         // POST: DetallePresupuesto/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var res = repositorio.Baja(id);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index),new {id = collection["IdPresupuesto"]});
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

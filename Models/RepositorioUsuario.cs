@@ -68,6 +68,36 @@ public class RepositorioUsuario
         }
     }
 
+    public Usuario ObtenerUsuarioPorEmail(String email)
+    {
+        Usuario res = null;
+        using (MySqlConnection conexion = new MySqlConnection(ConnectionString))
+        {
+            String sql = @"Select IdUsuario,Nombre,Apellido,Email,Clave,Avatar,Rol from Usuario where Email = @email;";
+            using (MySqlCommand com = new MySqlCommand(sql,conexion))
+            {
+                com.Parameters.AddWithValue(@"email",email);
+
+                conexion.Open();
+                var reader = com.ExecuteReader();
+                while(reader.Read())
+                {
+                    res = new Usuario{
+                        IdUsuario = reader.GetInt32(0),
+                        Nombre = reader.GetString(1),
+                        Apellido = reader.GetString(2),
+                        Email = reader.GetString(3),
+                        Clave = reader.GetString(4),
+                        Avatar = reader.GetString(5),
+                        Rol = reader.GetInt32(6)
+                    };
+                }
+                conexion.Close();
+            }
+            return res;
+        }
+    }
+
     public int Alta(Usuario usuario)
     {
         var res = -1;

@@ -1,4 +1,66 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Sintronico.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+var Configuration = builder.Configuration;
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(options =>
+        {
+            options.LoginPath = "/Usuario/Login";
+            options.LogoutPath = "/Usuario/Logout";
+            options.AccessDeniedPath = "/Home/Restringido/";
+        })        .AddJwtBearer(options =>//la api web valida con token
+				{
+					options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+					{
+						ValidateIssuer = true,
+						ValidateAudience = true,
+						ValidateLifetime = true,
+						ValidateIssuerSigningKey = true,
+						ValidIssuer = Configuration["TokenAuthentication:Issuer"],
+						ValidAudience = Configuration["TokenAuthentication:Audience"],
+						IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(
+							Configuration["TokenAuthentication:SecretKey"])),
+					};
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            var path = context.HttpContext.Request.Path;
+                            if (!string.IsNullOrEmpty(accessToken) &&
+                                path.StartsWithSegments("/Api/Propietario/token"))
+                            {
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
+				});
+
+builder.Services.AddAuthorization(options => 
+{
+        options.AddPolicy("Administrador",
+                    policy => policy.RequireRole("Administrador"));
+});
+
+builder.Services.AddDbContext<DataContext>(
+    options => options.UseMySql(
+        Configuration["ConnectionString:DefaultConnection"],
+        ServerVersion.AutoDetect(Configuration["ConnectionString:DefaultConnection"])
+    )
+); 
+
+
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(5000);
+    serverOptions.ListenAnyIP(5001,listenOptions => listenOptions.UseHttps());
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -13,15 +75,23 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    app.MapControllerRoute( name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+    app.MapControllerRoute( name: "Login" ,"entrar/{**accion}", new {controller = "Usuario",action = "Login"});
+});
+
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

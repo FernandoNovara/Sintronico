@@ -11,10 +11,12 @@ namespace Sintronico.Controllers
     public class PagosController : Controller
     {
         RepositorioPago repositorioPagos;
+        RepositorioPresupuesto repositorioPresupuesto;
 
         public PagosController()
         {
             repositorioPagos = new RepositorioPago();
+            repositorioPresupuesto = new RepositorioPresupuesto();
         }
 
         // GET: Pagos
@@ -25,27 +27,36 @@ namespace Sintronico.Controllers
         }
 
         // GET: Pagos/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var lista = repositorioPagos.ObtenerPago(id);
+            return View(lista);
         }
 
         // GET: Pagos/Create
         public ActionResult Create()
         {
+            ViewBag.Presupuesto = repositorioPresupuesto.ObtenerPresupuestos();
             return View();
         }
 
         // POST: Pagos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Pago pago)
         {
             try
             {
-                // TODO: Add insert logic here
+                var res = repositorioPagos.Alta(pago);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }                
             }
             catch
             {
@@ -54,21 +65,35 @@ namespace Sintronico.Controllers
         }
 
         // GET: Pagos/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            ViewBag.Presupuesto = repositorioPresupuesto.ObtenerPresupuestos();
+            var lista = repositorioPagos.ObtenerPago(id);
+            return View(lista);
         }
 
         // POST: Pagos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                var pago = new Pago();
+                pago.IdPresupuesto = Int32.Parse(collection["IdPresupuesto"]);
+                pago.FechaEmision = DateTime.Parse(collection["FechaEmision"]);
+                pago.Monto = Double.Parse(collection["Monto"]);
 
-                return RedirectToAction(nameof(Index));
+                var res = repositorioPagos.Editar(pago);
+
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -77,21 +102,29 @@ namespace Sintronico.Controllers
         }
 
         // GET: Pagos/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            var lista = repositorioPagos.ObtenerPago(id);
+            return View(lista);
         }
 
         // POST: Pagos/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var res = repositorioPagos.Baja(id);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

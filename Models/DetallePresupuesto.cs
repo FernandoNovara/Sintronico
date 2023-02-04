@@ -9,17 +9,19 @@ public class DetallePresupuesto
     [Key]
     public int IdDetalle {get;set;}
 
-    [NotMapped]
+    [Display(Name = "Presupuesto")]
     public int IdPresupuesto {get;set;}
 
-    [NotMapped]
-    public Presupuesto Presupuesto {get;set;}
+    [Display(Name = "Presupuesto")]
+    [ForeignKey(nameof(IdPresupuesto))]
+    public Presupuesto? Presupuesto {get;set;}
 
-    [NotMapped]
+    [Display(Name = "Repuestos")]
     public int IdRepuesto {get;set;}
 
-    [NotMapped]
-    public Repuestos Repuestos {get;set;}
+    [Display(Name = "Repuestos")]
+    [ForeignKey(nameof(IdRepuesto))]
+    public Repuestos? Repuestos {get;set;}
 
     public Double Total {get;set;}
 

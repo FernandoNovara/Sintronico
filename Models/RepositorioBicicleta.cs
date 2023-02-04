@@ -14,7 +14,10 @@ public class RepositorioBicicleta
         var res = new List<Bicicleta>();
         using (MySqlConnection conexion = new MySqlConnection(ConnectionString))
         {
-            String sql = @"Select IdBicicleta,IdPropietario,Marca,Color,NumeroSerie,Tipo,Imagen from Bicicleta;";
+            String sql = @"Select IdBicicleta,Marca,Color,NumeroSerie,Tipo,Imagen,propietario.IdPropietario,Nombre,Apellido 
+                           from Bicicleta
+                           JOIN propietario ON bicicleta.IdPropietario = propietario.IdPropietario  
+                           ORDER By bicicleta.IdBicicleta ASC;";
             using (MySqlCommand com = new MySqlCommand(sql,conexion))
             {
                 conexion.Open();
@@ -23,12 +26,16 @@ public class RepositorioBicicleta
                 {
                     var b = new Bicicleta{
                         IdBicicleta = reader.GetInt32(0),
-                        IdPropietario = reader.GetInt32(1),
-                        Marca = reader.GetString(2),
-                        Color = reader.GetString(3),
-                        NumeroSerie = reader.GetString(4),
-                        Tipo = reader.GetString(5),
-                        Imagen = reader.GetString(6)
+                        Marca = reader.GetString(1),
+                        Color = reader.GetString(2),
+                        NumeroSerie = reader.GetString(3),
+                        Tipo = reader.GetString(4),
+                        Imagen = reader.GetString(5),
+                        Dueño = new Propietario{
+                            IdPropietario = reader.GetInt32(6),
+                            Nombre = reader.GetString(7),
+                            Apellido = reader.GetString(8)
+                        }
                     };
                     res.Add(b);
                 }
@@ -36,14 +43,17 @@ public class RepositorioBicicleta
             }
             return res;
         }
-    }
+    } 
 
     public Bicicleta ObtenerBicicleta(int id)
     {
         Bicicleta res = null;
         using (MySqlConnection conexion = new MySqlConnection(ConnectionString))
         {
-            String sql = @"Select IdBicicleta,IdPropietario,Marca,Color,NumeroSerie,Tipo,Imagen from Bicicleta where IdBicicleta = @id;";
+            String sql = @"Select IdBicicleta,Marca,Color,NumeroSerie,Tipo,Imagen,propietario.IdPropietario,Nombre,Apellido 
+                           from Bicicleta
+                           JOIN propietario ON bicicleta.IdPropietario = propietario.IdPropietario  
+                           where IdBicicleta = @id;";
             using (MySqlCommand com = new MySqlCommand(sql,conexion))
             {
                 com.Parameters.AddWithValue($"@id",id);
@@ -53,12 +63,16 @@ public class RepositorioBicicleta
                 {
                     res = new Bicicleta{
                         IdBicicleta = reader.GetInt32(0),
-                        IdPropietario = reader.GetInt32(1),
-                        Marca = reader.GetString(2),
-                        Color = reader.GetString(3),
-                        NumeroSerie = reader.GetString(4),
-                        Tipo = reader.GetString(5),
-                        Imagen = reader.GetString(6)
+                        Marca = reader.GetString(1),
+                        Color = reader.GetString(2),
+                        NumeroSerie = reader.GetString(3),
+                        Tipo = reader.GetString(4),
+                        Imagen = reader.GetString(5),
+                        Dueño = new Propietario{
+                            IdPropietario = reader.GetInt32(6),
+                            Nombre = reader.GetString(7),
+                            Apellido = reader.GetString(8)
+                        }
                     };
                 }
                 conexion.Close();

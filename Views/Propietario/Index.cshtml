@@ -70,9 +70,6 @@
                 @Html.DisplayFor(modelItem => item.Avatar)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Clave)
-            </td>
-            <td>
                 @Html.ActionLink("Editar", "Editar", new {  id = item.IdPropietario  }) |
                 @Html.ActionLink("Detalles", "Detalles", new {  id = item.IdPropietario }) |
                 @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdPropietario })

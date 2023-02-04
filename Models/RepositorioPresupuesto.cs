@@ -14,7 +14,11 @@ public class RepositorioPresupuesto
         var res = new List<Presupuesto>();
         using (MySqlConnection conexion = new MySqlConnection(ConnectionString))
         {
-            String sql = @"Select IdPresupuesto,IdBicicleta,IdUsuario,FechaInicio,FechaEntrega,Monto,Estado from Presupuesto;";
+            String sql = @"Select IdPresupuesto,FechaInicio,FechaEntrega,Monto,Estado,presupuesto.IdBicicleta,Marca,NumeroSerie,presupuesto.IdUsuario,usuario.Nombre,usuario.Apellido
+                            from Presupuesto
+                            JOIN bicicleta ON presupuesto.IdBicicleta = bicicleta.IdBicicleta
+                            JOIN usuario ON presupuesto.IdUsuario = usuario.IdUsuario
+                            ORDER By presupuesto.IdPresupuesto ASC;";
             using (MySqlCommand com = new MySqlCommand(sql,conexion))
             {
                 conexion.Open();
@@ -23,12 +27,21 @@ public class RepositorioPresupuesto
                 {
                     var p = new Presupuesto{
                         IdPresupuesto = reader.GetInt32(0),
-                        IdBicicleta = reader.GetInt32(1),
-                        IdUsuario = reader.GetInt32(2),
-                        FechaInicio = reader.GetDateTime(3),
-                        FechaEntrega = reader.GetDateTime(4),
-                        Monto = reader.GetDouble(5),
-                        Estado = reader.GetString(6)
+                        FechaInicio = reader.GetDateTime(1),
+                        FechaEntrega = reader.GetDateTime(2),
+                        Monto = reader.GetDouble(3),
+                        Estado = reader.GetString(4),
+                        Bicicleta = new Bicicleta{
+                            IdBicicleta = reader.GetInt32(5),
+                            Marca = reader.GetString(6),
+                            NumeroSerie = reader.GetString(7),
+                        },
+                        Usuario = new Usuario{
+                            IdUsuario = reader.GetInt32(8),
+                            Nombre = reader.GetString(9),
+                            Apellido = reader.GetString(10)                            
+                        }
+
                     };
                     res.Add(p);
                 }
@@ -43,7 +56,11 @@ public class RepositorioPresupuesto
         Presupuesto res = null;
         using (MySqlConnection conexion = new MySqlConnection(ConnectionString))
         {
-            String sql = @"Select IdPresupuesto,IdBicicleta,IdUsuario,FechaInicio,FechaEntrega,Monto,Estado from Presupuesto where IdPresupuesto = @id;";
+            String sql = @"Select IdPresupuesto,FechaInicio,FechaEntrega,Monto,Estado,presupuesto.IdBicicleta,Marca,NumeroSerie,presupuesto.IdUsuario,usuario.Nombre,usuario.Apellido
+                            from Presupuesto
+                            JOIN bicicleta ON presupuesto.IdBicicleta = bicicleta.IdBicicleta
+                            JOIN usuario ON presupuesto.IdUsuario = usuario.IdUsuario
+                            where IdPresupuesto = @id;";
             using (MySqlCommand com = new MySqlCommand(sql,conexion))
             {
                 com.Parameters.AddWithValue($"@id",id);
@@ -53,12 +70,20 @@ public class RepositorioPresupuesto
                 {
                     res= new Presupuesto{
                         IdPresupuesto = reader.GetInt32(0),
-                        IdBicicleta = reader.GetInt32(1),
-                        IdUsuario = reader.GetInt32(2),
-                        FechaInicio = reader.GetDateTime(3),
-                        FechaEntrega = reader.GetDateTime(4),
-                        Monto = reader.GetDouble(5),
-                        Estado = reader.GetString(6)
+                        FechaInicio = reader.GetDateTime(1),
+                        FechaEntrega = reader.GetDateTime(2),
+                        Monto = reader.GetDouble(3),
+                        Estado = reader.GetString(4),
+                        Bicicleta = new Bicicleta{
+                            IdBicicleta = reader.GetInt32(5),
+                            Marca = reader.GetString(6),
+                            NumeroSerie = reader.GetString(7),
+                        },
+                        Usuario = new Usuario{
+                            IdUsuario = reader.GetInt32(8),
+                            Nombre = reader.GetString(9),
+                            Apellido = reader.GetString(10)                            
+                        }
                     };
                 }
                 conexion.Close();

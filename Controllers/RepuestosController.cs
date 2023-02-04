@@ -25,9 +25,10 @@ namespace Sintronico.Controllers
         }
 
         // GET: Repuestos/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Detalles(int id)
         {
-            return View();
+            var lista = repositorioRepuesto.ObtenerRepuesto(id);
+            return View(lista);
         }
 
         // GET: Repuestos/Create
@@ -39,13 +40,21 @@ namespace Sintronico.Controllers
         // POST: Repuestos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Repuestos repuesto)
         {
             try
             {
-                // TODO: Add insert logic here
+                var res = repositorioRepuesto.Alta(repuesto);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
+                
             }
             catch
             {
@@ -54,21 +63,36 @@ namespace Sintronico.Controllers
         }
 
         // GET: Repuestos/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Editar(int id)
         {
-            return View();
+            var lista = repositorioRepuesto.ObtenerRepuesto(id);
+            return View(lista);
         }
 
         // POST: Repuestos/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Editar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
+                var repuesto = repositorioRepuesto.ObtenerRepuesto(id);
+                repuesto.Nombre = collection["Nombre"];
+                repuesto.Tipo = collection["Tipo"];
+                repuesto.Monto = Double.Parse(collection["Monto"]);
+                repuesto.Detalle = collection["Detalle"];
+                repuesto.Imagen = collection["Imagen"];
 
-                return RedirectToAction(nameof(Index));
+                var res = repositorioRepuesto.Editar(repuesto);
+
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {
@@ -77,21 +101,29 @@ namespace Sintronico.Controllers
         }
 
         // GET: Repuestos/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            var lista = repositorioRepuesto.ObtenerRepuesto(id);
+            return View(lista);
         }
 
         // POST: Repuestos/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Eliminar(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                var res = repositorioRepuesto.Baja(id);
 
-                return RedirectToAction(nameof(Index));
+                if(res > 0)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    return View();
+                }
             }
             catch
             {

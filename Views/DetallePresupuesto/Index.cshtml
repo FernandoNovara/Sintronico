@@ -2,13 +2,16 @@
 
 @{
     ViewData["Title"] = "Index";
+    var Presupuesto = 0;
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Agregar Repuesto", "CreateRepuesto",new { id = (int)ViewBag.IdPresupuesto}) |
+    @Html.ActionLink("Agregar Reparacion", "CreateArreglo",new { id = (int)ViewBag.IdPresupuesto})
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -49,9 +52,8 @@
                 @Html.DisplayFor(modelItem => item.Cantidad)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Editar", "Editar", new { id = item.IdDetalle }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdDetalle })
             </td>
         </tr>
 }

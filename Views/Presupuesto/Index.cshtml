@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.IdPresupuesto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdBicicleta)
+                @Html.DisplayFor(modelItem => item.Bicicleta.IdBicicleta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdUsuario)
+                @Html.DisplayFor(modelItem => item.Usuario.IdUsuario)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaInicio)
@@ -62,7 +62,7 @@
             </td>
             <td>
                 @Html.ActionLink("Editar", "Editar", new { id = item.IdPresupuesto }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.IdPresupuesto }) |
+                @Html.ActionLink("Detalles", "Index","DetallePresupuesto", new { id = item.IdPresupuesto }) |
                 @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdPresupuesto })
             </td>
         </tr>

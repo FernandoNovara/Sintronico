@@ -1,26 +1,18 @@
 @model Sintronico.Models.DetallePresupuesto
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Create";
+    var IdPresupuesto = (int) ViewBag.IdPresupuesto;
 }
 
-<h1>Editar</h1>
+<h1>Create</h1>
 
 <h4>DetallePresupuesto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Editar">
-            <div class="form-group">
-                <label asp-for="IdPresupuesto" class="control-label"></label>
-                <select name="IdPresupuesto" class="form-control">
-                    @foreach (var item in (List<Presupuesto>) ViewBag.Presupuesto)
-                    {
-                        <option value="@item.IdPresupuesto"> @(item.IdPresupuesto) </option>
-                    }
-                </select>
-                <span asp-validation-for="IdPresupuesto" class="text-danger"></span>
-            </div>
+        <form asp-action="CreateRepuesto">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="IdRepuesto" class="control-label"></label>
                 <select name="IdRepuesto" class="form-control">
@@ -32,17 +24,15 @@
                 <span asp-validation-for="IdRepuesto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" />
-                <span asp-validation-for="Total" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Cantidad" class="control-label"></label>
-                <input asp-for="Cantidad" class="form-control" />
+                <input type="number" name="Cantidad" class="form-control" />
                 <span asp-validation-for="Cantidad" class="text-danger"></span>
             </div>
+            <div>
+                <input type="hidden" name="IdPresupuesto" value=@IdPresupuesto >
+            </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

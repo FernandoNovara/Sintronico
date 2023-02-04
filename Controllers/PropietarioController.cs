@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sintronico.Models;
@@ -11,10 +12,12 @@ namespace Sintronico.Controllers
     public class PropietarioController : Controller
     {
         RepositorioPropietario repositorio;
+        private readonly IConfiguration configuration;
 
-        public PropietarioController()
+        public PropietarioController(IConfiguration configuration)
         {
-            repositorio = new RepositorioPropietario();
+            this.repositorio = new RepositorioPropietario();
+            this.configuration = configuration;
         }
 
         // GET: Propietario
@@ -44,6 +47,16 @@ namespace Sintronico.Controllers
         {
             try
             {
+                String hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                    password: p.Clave,
+                    salt : System.Text.Encoding.ASCII.GetBytes(configuration["salt"]),
+                    prf : KeyDerivationPrf.HMACSHA1,
+                    iterationCount : 1000,
+                    numBytesRequested : 256 / 8 
+                ));
+                
+                p.Clave = hashed;
+
                 var res = repositorio.Alta(p);
                 if (res > 0)
                 {
@@ -82,7 +95,16 @@ namespace Sintronico.Controllers
                 p.Direccion = collection["Direccion"];
                 p.Email = collection["Email"];
                 p.Avatar = collection["Avatar"];
-                p.Clave = collection["Clave"];
+
+                String hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                    password: collection["Clave"],
+                    salt : System.Text.Encoding.ASCII.GetBytes(configuration["salt"]),
+                    prf : KeyDerivationPrf.HMACSHA1,
+                    iterationCount : 1000,
+                    numBytesRequested : 256 / 8 
+                ));
+
+                p.Clave = hashed;
 
                 var res = repositorio.Editar(p);
 

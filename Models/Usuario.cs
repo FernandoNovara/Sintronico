@@ -16,7 +16,7 @@ public class Usuario
 
     public string Clave {get;set;}
     
-    public string Avatar {get;set;}
+    public string? Avatar {get;set;}
 
     public int Rol {get;set;}
 

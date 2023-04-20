@@ -11,12 +11,12 @@ namespace Sintronico.Controllers
 {
     public class PropietarioController : Controller
     {
-        RepositorioPropietario repositorio;
+        private IRepositorioPropietario repositorio;
         private readonly IConfiguration configuration;
 
-        public PropietarioController(IConfiguration configuration)
+        public PropietarioController(IRepositorioPropietario repositorio,IConfiguration configuration)
         {
-            this.repositorio = new RepositorioPropietario();
+            this.repositorio = repositorio;
             this.configuration = configuration;
         }
 

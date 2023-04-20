@@ -14,5 +14,51 @@ html {
 }
 
 body {
+  background-image: url(../img/Fondotaller.jpg);
   margin-bottom: 60px;
+  background-size: 100% 100%;
+}
+
+body header{
+  background-color: #3b4652;
+  opacity: 0.7;
+}
+
+body footer{
+  background-color: #3b4652;
+  opacity: 0.7;
+}
+
+body div.login{
+  margin-top: 5rem;
+  background-color: #3b4652;
+  opacity: 0.85;
+  box-shadow:3px 3px 5px #000000;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 25px;
+  margin-left: 15rem;
+}
+
+body div.login div a.olvidado{
+  text-decoration: none;
+  color: #fff;
+}
+
+body div.login div a.olvidado:hover{
+  color: #848484;
+}
+
+body div.login div.imagenLogin{
+  background-image: url(../img/imagenLogin.png);
+  background-size: cover;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  box-shadow:2px 2px 5px #000000;
+}
+
+.table-propietario{
+  background-color: #3b4652;
+  border-radius: 5px;
 }

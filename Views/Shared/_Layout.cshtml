@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="~/Sintronico.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sintronico</a>
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Sintronico</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,54 +20,46 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
 
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a> 
-
                         @if( !User.Identity.IsAuthenticated)
                         {
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a> 
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Login">Login</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Login">Login</a>
                             </li>
                         }
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Propietario" asp-action="Index">Propietario</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Propietario" asp-action="Index">Propietario</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Bicicleta" asp-action="Index">Bicicleta</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Bicicleta" asp-action="Index">Bicicleta</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Presupuesto" asp-action="Index">Presupuesto</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="DetallePresupuesto" asp-action="Index">Detalle Presupuesto</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Presupuesto" asp-action="Index">Presupuesto</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Repuestos" asp-action="Index">Repuesto</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Repuestos" asp-action="Index">Repuesto</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Pagos" asp-action="Index">Pago</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Pagos" asp-action="Index">Pago</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Reparacion" asp-action="Index">Reparacion</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Logout">Cerrar sesión</a>
+                                <a class="nav-link text-light" asp-area="" asp-controller="Usuario" asp-action="Logout">Cerrar sesión</a>
                             </li>
                         }
                     </ul>
@@ -75,11 +67,17 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+
+
+    <div id="hero">
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

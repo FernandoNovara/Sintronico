@@ -11,15 +11,15 @@ namespace Sintronico.Controllers
     public class DetallePresupuestoController : Controller
     {
 
-        RepositorioDetallePresupuesto repositorio;
-        RepositorioRepuesto repositorioRepuesto;
-        RepositorioPresupuesto repositorioPresupuesto;
+        private IRepositorioDetallePresupuestos repositorio;
+        private IRepositorioRepuesto repositorioRepuesto;
+        private IRepositorioPresupuesto repositorioPresupuesto;
  
-        public DetallePresupuestoController()
+        public DetallePresupuestoController(IRepositorioDetallePresupuestos repositorio, IRepositorioRepuesto repositorioRepuesto, IRepositorioPresupuesto repositorioPresupuesto)
         {
-            repositorio = new RepositorioDetallePresupuesto();
-            repositorioRepuesto = new RepositorioRepuesto();
-            repositorioPresupuesto = new RepositorioPresupuesto();
+            this.repositorio = repositorio;
+            this.repositorioRepuesto = repositorioRepuesto;
+            this.repositorioPresupuesto = repositorioPresupuesto;
         }
 
         // GET: DetallePresupuesto
@@ -76,7 +76,7 @@ namespace Sintronico.Controllers
             return View();
         }
 
-        // POST: DetallePresupuesto/Create
+        // POST: DetallePresupuesto/Create 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateRepuesto(DetallePresupuesto detalle)

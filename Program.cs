@@ -55,6 +55,15 @@ builder.Services.AddDbContext<DataContext>(
     )
 ); 
 
+builder.Services.AddTransient<IRepositorio<Propietario>, RepositorioPropietario>();
+builder.Services.AddTransient<IRepositorioPropietario, RepositorioPropietario>();
+builder.Services.AddTransient<IRepositorioBicicleta, RepositorioBicicleta>();
+builder.Services.AddTransient<IRepositorioPresupuesto, RepositorioPresupuesto>();
+builder.Services.AddTransient<IRepositorioDetallePresupuestos, RepositorioDetallePresupuesto>();
+builder.Services.AddTransient<IRepositorioRepuesto, RepositorioRepuesto>();
+builder.Services.AddTransient<IRepositorioPago, RepositorioPago>();
+builder.Services.AddTransient<IRepositorioUsuario, RepositorioUsuario>();
+
 
 builder.WebHost.ConfigureKestrel(serverOptions =>
 {

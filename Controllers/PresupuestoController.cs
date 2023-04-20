@@ -10,15 +10,13 @@ namespace Sintronico.Controllers
 {
     public class PresupuestoController : Controller
     {
-        RepositorioPresupuesto repositorio;
-        RepositorioBicicleta repositorioBicicleta;
-        RepositorioUsuario repositorioUsuario;
+        private IRepositorioPresupuesto repositorio;
+        private IRepositorioBicicleta repositorioBicicleta;
 
-        public PresupuestoController()
+        public PresupuestoController(IRepositorioPresupuesto repositorio, IRepositorioBicicleta repositorioBicicleta)
         {
-            repositorio = new RepositorioPresupuesto();
-            repositorioBicicleta = new RepositorioBicicleta();
-            repositorioUsuario = new RepositorioUsuario();
+            this.repositorio = repositorio;
+            this.repositorioBicicleta = repositorioBicicleta;
         }
         // GET: Presupuesto
         public ActionResult Index()
@@ -38,7 +36,6 @@ namespace Sintronico.Controllers
         public ActionResult Create()
         {
             ViewBag.Bicicletas = repositorioBicicleta.ObtenerBicicletas();
-            ViewBag.Usuarios = repositorioUsuario.ObtenerUsuarios();
             return View();
         }
 
@@ -81,7 +78,6 @@ namespace Sintronico.Controllers
             {
                 var p = repositorio.ObtenerPresupuesto(id);
                 p.IdBicicleta = Int32.Parse(collection["IdBicicleta"]);
-                p.IdUsuario = Int32.Parse(collection["IdUsuario"]);
                 p.FechaInicio = DateTime.Parse(collection["FechaInicio"]) ;
                 p.FechaEntrega = DateTime.Parse(collection["FechaEntrega"]);
                 p.Monto = Double.Parse(collection["Monto"]);

@@ -16,12 +16,12 @@ namespace Sintronico.Controllers
     public class UsuarioController : Controller
     {
         private readonly IConfiguration configuration;
-        RepositorioUsuario repositorioUsuario;
+        private IRepositorioUsuario repositorioUsuario;
 
-        public UsuarioController(IConfiguration configuration)
+        public UsuarioController(IConfiguration configuration, IRepositorioUsuario repositorioUsuario)
         {
             this.configuration = configuration;
-            repositorioUsuario = new RepositorioUsuario();
+            this.repositorioUsuario = repositorioUsuario;
         }
 
         // GET: Usuario

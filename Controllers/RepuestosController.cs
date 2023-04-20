@@ -10,11 +10,13 @@ namespace Sintronico.Controllers
 {
     public class RepuestosController : Controller
     {
-        RepositorioRepuesto repositorioRepuesto;
+        private IRepositorioRepuesto repositorioRepuesto;
+        IWebHostEnvironment environment;
 
-        public RepuestosController()
+        public RepuestosController(IWebHostEnvironment environment, IRepositorioRepuesto repositorioRepuesto)
         {
-            repositorioRepuesto = new RepositorioRepuesto();
+            this.repositorioRepuesto = repositorioRepuesto;
+            this.environment = environment;
         }
 
         // GET: Repuestos
@@ -45,6 +47,19 @@ namespace Sintronico.Controllers
             try
             {
                 var res = repositorioRepuesto.Alta(repuesto);
+                if(repuesto.ImagenFile != null && repuesto.IdRepuesto > 0)
+                {
+                    string wwwPath = environment.WebRootPath;
+                    string path = Path.Combine(wwwPath,"Uploads");
+                    string fileName = "imagen_" + repuesto.IdRepuesto + Path.GetExtension(repuesto.ImagenFile.FileName);
+                    string pathCompleto = Path.Combine(path,fileName);
+                    repuesto.Imagen = Path.Combine("/Uploads",fileName);
+                    using(FileStream stream = new FileStream(pathCompleto,FileMode.Create))
+                    {
+                         repuesto.ImagenFile.CopyTo(stream);
+                    }
+                    repositorioRepuesto.Editar(repuesto);
+                }
 
                 if(res > 0)
                 {
@@ -81,7 +96,19 @@ namespace Sintronico.Controllers
                 repuesto.Tipo = collection["Tipo"];
                 repuesto.Monto = Double.Parse(collection["Monto"]);
                 repuesto.Detalle = collection["Detalle"];
-                repuesto.Imagen = collection["Imagen"];
+                // repuesto.ImagenFile = collection["ImagenFile"];
+                // if(collection["ImagenFile"] != null)
+                //         {
+                //             string wwwPath = environment.WebRootPath;
+                //             string path = Path.Combine(wwwPath,"Upload");
+                //             string fileName = "imagen_" + repuesto.IdRepuesto + Path.GetExtension(repuesto.ImagenFile.FileName);
+                //             string pathCompleto = Path.Combine(path,fileName);
+                //             repuesto.Imagen = Path.Combine("/Upload",fileName);
+                //             using(FileStream stream = new FileStream(pathCompleto,FileMode.Create))
+                //             {
+                //                 repuesto.ImagenFile.CopyTo(stream);
+                //             }
+                //         }
 
                 var res = repositorioRepuesto.Editar(repuesto);
 

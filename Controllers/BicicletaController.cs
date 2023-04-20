@@ -10,13 +10,13 @@ namespace Sintronico.Controllers
 {
     public class BicicletaController : Controller
     {
-        RepositorioBicicleta repositorio;
-        RepositorioPropietario RepositorioPropietario;
+        private IRepositorioBicicleta repositorio;
+        private IRepositorioPropietario RepositorioPropietario;
 
-        public BicicletaController()
+        public BicicletaController(IRepositorioBicicleta repositorio,IRepositorioPropietario RepositorioPropietario)
         {
-            repositorio = new RepositorioBicicleta();
-            RepositorioPropietario = new RepositorioPropietario();
+            this.repositorio = repositorio;
+            this.RepositorioPropietario = RepositorioPropietario;
         }
 
         // GET: Bicicleta

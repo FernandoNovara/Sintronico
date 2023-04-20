@@ -10,13 +10,13 @@ namespace Sintronico.Controllers
 {
     public class PagosController : Controller
     {
-        RepositorioPago repositorioPagos;
-        RepositorioPresupuesto repositorioPresupuesto;
+        private IRepositorioPago repositorioPagos;
+        private IRepositorioPresupuesto repositorioPresupuesto;
 
-        public PagosController()
+        public PagosController(IRepositorioPago repositorioPagos, IRepositorioPresupuesto repositorioPresupuesto)
         {
-            repositorioPagos = new RepositorioPago();
-            repositorioPresupuesto = new RepositorioPresupuesto();
+            this.repositorioPagos = repositorioPagos;
+            this.repositorioPresupuesto = repositorioPresupuesto;
         }
 
         // GET: Pagos

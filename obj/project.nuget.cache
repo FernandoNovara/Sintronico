@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fJOVGJzUNJxE+n/XNufgd8PwhYCvJSoLJOtLA870eKHjYto3PzZVWBsUsftgt5kaJaR8jc/HOhkV3Qu4E1qseA==",
+  "dgSpecHash": "hlHgb+1UD+i/Rb14SaOusMjJKk9SxeE+Z9tSlyyzcq5jRNmeAPG02O9b+KEsWgUY8PSEKzq6u73Mk++wFaIglw==",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\Net\\Sintronico\\Sintronico.csproj",
+  "projectFilePath": "c:\\xampp\\htdocs\\Net\\El Sintronico\\Sintronico\\Sintronico.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ferna\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\Ferna\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",

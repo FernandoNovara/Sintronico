@@ -9913,11 +9913,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\xampp\\htdocs\\Net\\Sintronico\\Sintronico.csproj",
+      "projectUniqueName": "c:\\xampp\\htdocs\\Net\\El Sintronico\\Sintronico\\Sintronico.csproj",
       "projectName": "Sintronico",
-      "projectPath": "C:\\xampp\\htdocs\\Net\\Sintronico\\Sintronico.csproj",
+      "projectPath": "c:\\xampp\\htdocs\\Net\\El Sintronico\\Sintronico\\Sintronico.csproj",
       "packagesPath": "C:\\Users\\Ferna\\.nuget\\packages\\",
-      "outputPath": "C:\\xampp\\htdocs\\Net\\Sintronico\\obj\\",
+      "outputPath": "c:\\xampp\\htdocs\\Net\\El Sintronico\\Sintronico\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ferna\\AppData\\Roaming\\NuGet\\NuGet.Config"
